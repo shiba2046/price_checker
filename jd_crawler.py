@@ -1,4 +1,4 @@
-
+import re
 class Queue(object):
     def __init__(self, q = []):
         self.todo = set(q)
@@ -93,5 +93,4 @@ class jd_crawler(object):
         self.queue.add([self._clean_sku_id(x) for x in list(sku_ids)])
         while not self.queue.isdone:
             results.append(self.query_sku(self.queue.next()))
-
         return results
