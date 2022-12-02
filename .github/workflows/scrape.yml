@@ -25,8 +25,13 @@ jobs:
           chromium-browser --version
           chromium --version
           ls -al /usr/bin/chromium*
-          sudo rm -rf /usr/bin/chromium
+          # sudo rm -rf /usr/bin/chromium
 
+      - name: Check driver version
+        run: |-
+          cd chromedriver
+          ./update.sh
+          
       - name: Install all necessary packages
         run: pip install requests webdriver-manager selenium # beautifulsoup4 pandas
 
