@@ -1,6 +1,11 @@
 name: scrape
 on:
   workflow_dispatch:
+
+  push: 
+    branches:
+      - 'main'
+      
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -31,7 +36,7 @@ jobs:
         run: |-
           cd chromedriver
           ./update.sh
-          
+
       - name: Install all necessary packages
         run: pip install requests webdriver-manager selenium # beautifulsoup4 pandas
 
