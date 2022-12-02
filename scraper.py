@@ -1,18 +1,11 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.utils import ChromeType #, read_version_from_cmd, PATTERN
+# from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.core.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import os
 
-if "GITHUB_ACTION" in os.environ: 
-    # version = read_version_from_cmd("/usr/bin/chromium-browser --version", PATTERN[ChromeType.CHROMIUM])
-    # chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, version=version, path='/usr/bin/chromium-browser') .install())
-    # chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, path='/usr/bin/chromium-browser') .install())\
-    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM) .install())
-else:
-    chrome_service = Service(ChromeDriverManager().install())
-
+# Options
 chrome_options = Options()
 options = [
     "--headless",
@@ -29,13 +22,17 @@ for option in options:
 chrome_options.experimental_options["prefs"] = {
     "profile.default_content_settings": {"images": 2},
     "profile.managed_default_content_settings" : {"images": 2},
-    
 }
+
+if "GITHUB_ACTION" in os.environ: 
+    chrome_service = Service(executable_path='./chromedriver/chromedriver')
+    # chrome_options.binary_location = '/snap/bin/chromium-browser'
+    
+else:
+    chrome_service = Service(executable_path='./chromedriver/chromedriver.exe')
+
 chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
-
-# driver.get('http://nytimes.com')
-# print(driver.title)
 
 from jd_crawler import jd_crawler
 # import pandas as pd
