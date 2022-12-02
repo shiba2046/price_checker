@@ -38,7 +38,9 @@ jobs:
           ls -al
           cd chromedriver
           bash ./update.sh
-          sudo cp chromedriver\chromedriver /usr/bin/
+          sudo chmod +x chromedriver/chromedriver && sudo cp chromedriver/chromedriver /usr/bin/
+          chromedriver --version
+
 
       - name: Install all necessary packages
         run: pip install requests webdriver-manager selenium # beautifulsoup4 pandas

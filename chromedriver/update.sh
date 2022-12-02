@@ -4,6 +4,9 @@ version=$(chromium-browser --version | cut -d ' ' -f2 | xargs)
 # version='108.0.5359.71' 
 existing_version=$(cat linux-version | xargs)
 
+driver_version=$(./chromedriver --version)
+echo Driver version $driver_version
+
 echo Driver: $existing_version
 echo Chrome: $version
 
