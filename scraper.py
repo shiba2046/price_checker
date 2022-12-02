@@ -1,13 +1,14 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.utils import ChromeType, read_version_from_cmd, PATTERN
+from webdriver_manager.core.utils import ChromeType #, read_version_from_cmd, PATTERN
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import os
 
 if "GITHUB_ACTION" in os.environ: 
-    version = read_version_from_cmd("/usr/bin/chromium-browser --version", PATTERN[ChromeType.CHROMIUM])
-    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, version=version, path='/usr/bin/chromium-browser') .install())
+    # version = read_version_from_cmd("/usr/bin/chromium-browser --version", PATTERN[ChromeType.CHROMIUM])
+    # chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, version=version, path='/usr/bin/chromium-browser') .install())
+    chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, path='/usr/bin/chromium-browser') .install())
 else:
     chrome_service = Service(ChromeDriverManager().install())
 

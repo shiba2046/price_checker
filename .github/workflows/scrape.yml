@@ -17,21 +17,17 @@ jobs:
         run: sudo apt purge google-chrome-stable chromium-browser
       # - name: Remove default Chromium
       #   run: sudo apt purge chromium-browser 
+      - name: Install a new Chromium
+        run: sudo apt install -y chromium-browser
       
       - name: Check chromium versions
         run: |-
           which chromium-browser
           which chromium
-          # chromium-browser
-          # sudo rm /usr/bin/chromium
           chromium-browser --version
           chromium --version
-          ls -al /usr/bin/chromium
+          ls -al /usr/bin/chromium*
           sudo rm -rf /usr/bin/chromium
-
-      - name: Install a new Chromium
-        run: sudo apt install -y chromium-browser
-
 
       - name: Install all necessary packages
         run: pip install requests webdriver-manager selenium # beautifulsoup4 pandas
