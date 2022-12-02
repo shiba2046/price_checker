@@ -29,6 +29,7 @@ jobs:
           which chromium-browser
           which chromium
           # chromium-browser
+          rm /usr/bin/chromium
       - name: Run the scraping script
         run: python scraper.py
 
