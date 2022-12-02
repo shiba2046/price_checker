@@ -1,4 +1,7 @@
 import re
+from selenium.webdriver.common.by import By
+from datetime import datetime
+
 class Queue(object):
     def __init__(self, q = []):
         self.todo = set(q)
@@ -34,6 +37,7 @@ class jd_crawler(object):
     def __init__(self, webdriver):
         self.browser = webdriver
         self.queue= Queue()
+        self.timestamp = datetime.now()
 
     def _find_element_by_selector(self, selector : str) -> str:
         return self.browser.find_element(By.CSS_SELECTOR, selector).text
@@ -58,6 +62,8 @@ class jd_crawler(object):
         }
 
         result = {
+            'timestamp': self.timestamp,
+            'source': '京东',
             'sku': sku_id,
             'url': url
         }
