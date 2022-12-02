@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service
 import os
 
 if "GITHUB_ACTION" in os.environ: 
-    version = read_version_from_cmd("/usr/bin/chromium-browser --version", PATTERN["Chromium"])
+    version = read_version_from_cmd("/usr/bin/chromium-browser --version", PATTERN[ChromeType.CHROMIUM])
     chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM, version=version, path='/usr/bin/chromium-browser') .install())
 else:
     chrome_service = Service(ChromeDriverManager().install())
