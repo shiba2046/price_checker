@@ -14,7 +14,7 @@ jobs:
       - name: Installed package list
         run: apt list --installed
       - name: Remove Chrome
-        run: sudo apt purge google-chrome-stable chromium-browser chrome
+        run: sudo apt purge google-chrome-stable chromium-browser
  
       - name: Check chromium versions
         run: |-
