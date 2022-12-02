@@ -5,7 +5,7 @@ on:
   push: 
     branches:
       - 'main'
-      
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -34,8 +34,10 @@ jobs:
 
       - name: Check driver version
         run: |-
+          pwd
+          ls -al
           cd chromedriver
-          ./update.sh
+          bash ./update.sh
 
       - name: Install all necessary packages
         run: pip install requests webdriver-manager selenium # beautifulsoup4 pandas
