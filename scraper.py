@@ -25,7 +25,7 @@ chrome_options.experimental_options["prefs"] = {
 }
 
 if "GITHUB_ACTION" in os.environ: 
-    chrome_service = Service()    
+    chrome_service = Service(executable_path='./chromedriver/chromedriver')    
 else:
     chrome_service = Service(executable_path='./chromedriver/chromedriver.exe')
 
