@@ -2,9 +2,9 @@ name: scrape
 on:
   workflow_dispatch:
 
-  push: 
-    branches:
-      - 'main'
+  # push: 
+  #   branches:
+  #     - 'main'
 
 jobs:
   scrape:
@@ -37,8 +37,10 @@ jobs:
           pwd
           ls -al
           cd chromedriver
+          ls -al
+          chmod +x chromedriver
           bash ./update.sh
-          sudo chmod +x chromedriver/chromedriver && sudo cp chromedriver/chromedriver /usr/bin/
+          chmod +x chromedriver && sudo cp chromedriver /usr/bin/
           chromedriver --version
 
 

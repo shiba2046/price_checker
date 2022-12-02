@@ -25,10 +25,7 @@ chrome_options.experimental_options["prefs"] = {
 }
 
 if "GITHUB_ACTION" in os.environ: 
-    # chrome_service = Service(executable_path='./chromedriver/chromedriver')
-    # chrome_options.binary_location = '/snap/bin/chromium-browser'
-    chrome_service = Service()
-    
+    chrome_service = Service()    
 else:
     chrome_service = Service(executable_path='./chromedriver/chromedriver.exe')
 
@@ -44,8 +41,6 @@ with open('jd_list.txt', 'r') as f:
 
 results = jd.query_skus(jd_list)
 
-# df = pd.DataFrame.from_records(results)
-# df.to_csv('jd_results.csv', float_format='%.2f', index=False, encoding='utf-8-sig')
 from csv import DictWriter
 with open("results/jd_results.csv", 'a', encoding='utf-8-sig') as csv_file:
     writer_object = DictWriter(csv_file, fieldnames=results[0].keys())
