@@ -29,8 +29,6 @@ jobs:
           chromium-browser --version
           which chromium
           chromium --version
-          which chrome
-          chrome --version
           ls -al /usr/bin/chrom*
           sudo rm -rf /usr/bin/chromium && sudo ln -s /snap/bn/chromium /usr/bin/chromium
 
