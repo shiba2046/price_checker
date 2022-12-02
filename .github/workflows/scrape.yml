@@ -2,9 +2,9 @@ name: scrape
 on:
   workflow_dispatch:
 
-  # push: 
-  #   branches:
-  #     - 'main'
+  push: 
+    branches:
+      - 'main'
 
 jobs:
   scrape:
@@ -26,11 +26,13 @@ jobs:
       - name: Check chromium versions
         run: |-
           which chromium-browser
-          which chromium
           chromium-browser --version
+          which chromium
           chromium --version
-          ls -al /usr/bin/chromium*
-          # sudo rm -rf /usr/bin/chromium
+          which chrome
+          chrome --version
+          ls -al /usr/bin/chrom*
+          sudo rm -rf /usr/bin/chromium && sudo ln -s /snap/bn/chromium /usr/bin/chromium
 
       - name: Check driver version
         run: |-
