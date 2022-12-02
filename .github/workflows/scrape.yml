@@ -14,22 +14,29 @@ jobs:
       - name: Installed package list
         run: apt list --installed
       - name: Remove Chrome
-        run: sudo apt purge google-chrome-stable
-      - name: Remove default Chromium
-        run: sudo apt purge chromium-browser
-
-      - name: Install a new Chromium
-        run: sudo apt install -y chromium-browser
-
-      - name: Install all necessary packages
-        run: pip install requests webdriver-manager selenium # beautifulsoup4 pandas
-
+        run: sudo apt purge google-chrome-stable chromium-browser
+      # - name: Remove default Chromium
+      #   run: sudo apt purge chromium-browser 
+      
       - name: Check chromium versions
         run: |-
           which chromium-browser
           which chromium
           # chromium-browser
-          rm /usr/bin/chromium
+          # sudo rm /usr/bin/chromium
+          chromium-browser --version
+          chromium --version
+          ls -al /usr/bin/chromium
+          sudo rm -rf /usr/bin/chromium
+
+      - name: Install a new Chromium
+        run: sudo apt install -y chromium-browser
+
+
+      - name: Install all necessary packages
+        run: pip install requests webdriver-manager selenium # beautifulsoup4 pandas
+
+      
       - name: Run the scraping script
         run: python scraper.py
 
